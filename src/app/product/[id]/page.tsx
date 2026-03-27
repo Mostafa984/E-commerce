@@ -6,8 +6,11 @@ import { FaBolt, FaShoppingCart, FaStar } from 'react-icons/fa'
 import { LuDot } from 'react-icons/lu'
 import { CiHeart } from 'react-icons/ci'
 import { IoShareSocialOutline } from 'react-icons/io5'
+interface ParamsDT {
+  params: Promise<{ id: string }>;
+}
 
-export default async function page({ params }) {
+export default async function page({ params }:ParamsDT) {
 
     const myParams = await params
     const finalParams = myParams.id
