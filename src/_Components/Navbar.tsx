@@ -16,41 +16,28 @@ import { CiHeart } from "react-icons/ci"
 import { FaWallet } from "react-icons/fa6"
 import { FaHeadset, FaHeart, FaShoppingCart } from "react-icons/fa"
 
-const components: { title: string; href: string; description: string }[] = [
+const components: { title: string; href: string; }[] = [
     {
-        title: "Alert Dialog",
+        title: "All Categories",
         href: "/docs/primitives/alert-dialog",
-        description:
-            "A modal dialog that interrupts the user with important content and expects a response.",
-    },
+       },
     {
-        title: "Hover Card",
+        title: "Electronics ",
         href: "/docs/primitives/hover-card",
-        description:
-            "For sighted users to preview content available behind a link.",
-    },
+        },
     {
-        title: "Progress",
+        title: "women's Fashion",
         href: "/docs/primitives/progress",
-        description:
-            "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-    },
+        },
     {
-        title: "Scroll-area",
+        title: "Mens's Fashion",
         href: "/docs/primitives/scroll-area",
-        description: "Visually or semantically separates content.",
+      
     },
     {
-        title: "Tabs",
+        title: "Beauty & Health",
         href: "/docs/primitives/tabs",
-        description:
-            "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-    },
-    {
-        title: "Tooltip",
-        href: "/docs/primitives/tooltip",
-        description:
-            "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      
     },
 ]
 
@@ -58,12 +45,12 @@ export function Navbar() {
     return (
 
 
-        <NavigationMenu className=" z-100000 shadow-xs    max-w-none p-4   ">
+        <NavigationMenu className=" z-100000! sticky shadow-xs    max-w-none p-4   ">
 
-            <div className="container mx-auto flex justify-between items-center sm:w-full md:w-full">
+            <div className="container  mx-auto flex justify-between items-center sm:w-full md:w-full">
 
                 <Link href={"/"}>
-                <Image src={logo} alt={"Fresh cart Logo"} />
+                    <Image src={logo} alt={"Fresh cart Logo"} />
                 </Link>
 
                 <input className=" w-2xl py-3 px-5 bg-[#F9FAFB80] rounded-full border-2 border-[#F9FAFB80 ] " placeholder="Search for products, brands and more..." type="text" />
@@ -84,24 +71,24 @@ export function Navbar() {
 
                         <NavigationMenuItem>
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link className="bg-transparent hover:bg-transparent" href="/shop">Shop</Link>
+                                <Link className="bg-transparent hover:bg-transparent" href="/products">Shop</Link>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
 
 
 
 
-                        <NavigationMenuItem className=" bg-transparent hover:bg-transparent hidden md:flex">
+                        <NavigationMenuItem className="  bg-transparent hover:bg-transparent hidden md:flex">
                             <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
                             <NavigationMenuContent>
-                                <ul className=" bg-transparent hover:bg-transparent grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                                <ul className=" bg-transparent hover:bg-transparent grid w-100 gap-2 md:w-125 md:grid-cols-2 lg:w-150">
                                     {components.map((component) => (
                                         <ListItem
                                             key={component.title}
                                             title={component.title}
                                             href={component.href}
                                         >
-                                            {component.description}
+                                           
                                         </ListItem>
                                     ))}
                                 </ul>
@@ -112,8 +99,30 @@ export function Navbar() {
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                                 <Link className="bg-transparent hover:bg-transparent" href="/brands">Brands</Link>
                             </NavigationMenuLink>
-                         
+
                         </NavigationMenuItem>
+
+
+
+                        <NavigationMenuItem>
+                            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                                <Link className="bg-transparent hover:bg-transparent" href="/login">login</Link>
+                            </NavigationMenuLink>
+
+                        </NavigationMenuItem>
+
+
+
+
+                        <NavigationMenuItem>
+                            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                                <Link className="bg-transparent hover:bg-transparent" href="/signup">Signup</Link>
+                            </NavigationMenuLink>
+
+                        </NavigationMenuItem>
+
+
+
                     </div>
 
 
@@ -122,19 +131,19 @@ export function Navbar() {
 
                     <div className="icons  gap-2 flex items-center justify-center border-r border-[#E5E7EB] ">
 
-                                       <div className=" flex justify-center items-center bg-[#F0FDF4] w-10 h-10 rounded-full">
-                                <FaHeadset className=" text-[#16A34A]" />
-                            </div>
-                            <div>
-                                <p className = "text-[#99A1AF] font-medium text-xs" > Support</p>
-                                <p className="text-[#364153] font-semibold text-sm"> 24/7 Help</p>
-                            </div>
+                        <div className=" flex justify-center items-center bg-[#F0FDF4] w-10 h-10 rounded-full">
+                            <FaHeadset className=" text-[#16A34A]" />
+                        </div>
+                        <div>
+                            <p className="text-[#99A1AF] font-medium text-xs" > Support</p>
+                            <p className="text-[#364153] font-semibold text-sm"> 24/7 Help</p>
+                        </div>
 
-                                            <div className=" flex items-center justify-center  gap-4">
-                                                <CiHeart className="w-5 h-5" />
-                                                <FaShoppingCart className=" w-5 h-5text-[#6A7282]" />
-                                            </div>
-                    
+                        <div className=" flex items-center justify-center  gap-4">
+                            <CiHeart className="w-5 h-5" />
+                            <FaShoppingCart className=" w-5 h-5text-[#6A7282]" />
+                        </div>
+
                     </div>
 
                 </NavigationMenuList>

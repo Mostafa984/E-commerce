@@ -2,17 +2,16 @@ import { getCategories } from '@/_Services/Api';
 
 import React from 'react'
 import { FaArrowRight } from 'react-icons/fa';
-import { Category } from '@/Types/Product.Types';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
 
-
-
-
-export default async function Categories() {
+export default async function Allcategories() {
 
   const categories = await getCategories()
+
+ 
 
   return (
     <section className="py-10 bg-gray-50/50">

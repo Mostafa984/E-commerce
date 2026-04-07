@@ -34,5 +34,17 @@ export interface ProductsType {
   category: CategoryType;
   ratingsAverage: number;
   description:string;
+  
 }
+
+
+
+export interface AllBrands {
+  _id: string,
+  name: string,
+  slug: string,
+  image: string
+
+}
+
 

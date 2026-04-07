@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Exo } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/_Components/Navbar";
 import Footer from "@/_Components/Footer";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,8 +19,8 @@ const geistMono = Geist_Mono({
 const exo = Exo({
   variable: "--font-exo",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "900"], // Exo supports all these
- 
+  weight: ["400", "500", "600", "700", "900"],
+
 });
 
 export const metadata: Metadata = {
@@ -35,11 +36,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${exo.variable}  font-exo   antialiased `}
+        className={`${geistSans.variable} ${geistMono.variable} ${exo.variable}  font-exo    antialiased `}
       >
         <Navbar />
+        <Toaster />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
