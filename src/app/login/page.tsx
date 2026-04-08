@@ -191,7 +191,7 @@ export default function SignIn() {
                     placeholder="aLi@example.com"
                     autoComplete="off"
                     
-                    className='focus:border-amber-400 important'
+                  
                   />
 
                 
@@ -217,7 +217,7 @@ export default function SignIn() {
                     placeholder="create a strong password"
                     autoComplete="off"
                     type='password'
-                    className='my-2'
+                    className='my-2 '
                   />
 
                   {fieldState.invalid && <FieldError errors={[fieldState.error]} />}

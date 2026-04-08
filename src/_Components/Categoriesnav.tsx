@@ -2,16 +2,18 @@ import { getCategories } from '@/_Services/Api'
 import Link from 'next/link'
 import React from 'react'
 import { IconType } from 'react-icons/lib'   // Optional but recommended
+import { Category } from './../Types/Product.Types';
 
 interface Props {
-    bgLinear: string
-    field: string
-    title: string
-    disc: string
-    icon: React.ReactNode   // Better type: accept component or node
+    bgLinear: string,
+    field: string,
+    title: string,
+    disc: string,
+    icon: React.ReactNode ,  // Better type: accept component or node
+    category?:string
 }
 
-export default async function Categoriesnav({bgLinear, field,title,disc,icon }: Props) {
+export default async function Categoriesnav({bgLinear, field,title,disc,icon,category }: Props) {
 
     const categories = await getCategories()
 
@@ -23,7 +25,12 @@ export default async function Categoriesnav({bgLinear, field,title,disc,icon }: 
                     <nav className="flex items-center gap-2 mb-8 text-sm font-medium">
                         <Link href="/" className="text-white/70 hover:text-white transition-colors">
                             Home
+                        </Link> 
+
+                        <Link href="/categories" className="text-white/70 hover:text-white transition-colors">
+                         {category}
                         </Link>
+                        
                         <span className="text-white/40">/</span>
                         <span className="text-white">{field}</span>
                     </nav>

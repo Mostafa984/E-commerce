@@ -17,6 +17,7 @@ export default async function page({ params }: ParamsDT) {
     const myParams = await params
     const finalParams = myParams.id
     const product = await getProductById(finalParams)
+    
 
     const discounted = 100 - ((product?.priceAfterDiscount) / (product?.price)) * 100
     console.log("discounted tag price :", discounted)

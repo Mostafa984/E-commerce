@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaHeadphones, FaShieldAlt, FaTruck } from 'react-icons/fa'
-import { FaArrowRotateLeft } from 'react-icons/fa6'
+
 
 export default function Services() {
 
@@ -12,7 +12,7 @@ export default function Services() {
 
 
     ]
-    { console.log("out map", prps[0].icon) }
+    
     return (
 
         <section>

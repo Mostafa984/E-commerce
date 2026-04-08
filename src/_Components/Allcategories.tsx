@@ -3,7 +3,7 @@ import { getCategories } from '@/_Services/Api';
 import React from 'react'
 import { FaArrowRight } from 'react-icons/fa';
 
-import Image from 'next/image';
+
 import Link from 'next/link';
 
 
@@ -20,7 +20,7 @@ export default async function Allcategories() {
 
         <div className="container   mx-auto flex items-center gap-3 mb-8">
           {/* Vertical  Bar */}
-          <div className=" w-1.5 h-8 bg-gradient-to-t from-[#00BC7D] to-[#007A55] rounded-full"></div>
+          <div className=" w-1.5 h-8 bg-linear-to-t from-[#00BC7D] to-[#007A55] rounded-full"></div>
 
           <div className="flex my-8 gap-3 flex-1 justify-between items-center">
 

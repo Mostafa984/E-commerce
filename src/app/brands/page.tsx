@@ -8,9 +8,9 @@ export default async function brands() {
 
 
  const product = await getAllBrands()
- console.log("brands: ",product)
+  console.log("brands: ",product)
 
-
+  
 
   return (
     <section className=''>

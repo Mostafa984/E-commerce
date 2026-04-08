@@ -30,7 +30,7 @@ export default async function Products() {
                         </div>
                         
 
-                        {product.priceAfterDiscount && <div className='bg-red-500 text-white text-xs px-2 py-1 rounded'> Discounted tag </div>}
+                        {product.priceAfterDiscount && <div className='bg-red-500 text-white text-xs px-2 py-1 rounded'> Discouasdasnted tag </div>}
 
                         { /* icons */}
                         <div className='absolute top-3 right-1  space-y-3'>

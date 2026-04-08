@@ -1,12 +1,18 @@
-import Categories from '@/_Components/Categoriesnav'
+
 import { getCategories } from '@/_Services/Api'
 import Link from 'next/link'
 import React from 'react'
 import { IoLayers } from 'react-icons/io5'
-import { FaLeaf } from 'react-icons/fa';
+
 import Categoriesnav from '@/_Components/Categoriesnav'
 
 export default async function Page() {
+
+
+
+
+
+    
     const categories = await getCategories()
 
     return (
@@ -28,7 +34,7 @@ export default async function Page() {
                         {categories?.map((item) => (
                             <Link
                                 key={item._id}
-                                href={`/category/${item.slug}`}
+                                href={`/categories/${item._id}`}
                                 className="group bg-white rounded-3xl p-4 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
                             >
                                 <div className="aspect-square mb-4 overflow-hidden rounded-2xl bg-gray-50">

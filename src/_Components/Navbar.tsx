@@ -13,31 +13,31 @@ import {
 import Image from "next/image"
 import logo from "../assets/images/logo.png"
 import { CiHeart } from "react-icons/ci"
-import { FaWallet } from "react-icons/fa6"
-import { FaHeadset, FaHeart, FaShoppingCart } from "react-icons/fa"
+
+import { FaHeadset, FaShoppingCart } from "react-icons/fa"
 
 const components: { title: string; href: string; }[] = [
     {
         title: "All Categories",
         href: "/docs/primitives/alert-dialog",
-       },
+    },
     {
         title: "Electronics ",
         href: "/docs/primitives/hover-card",
-        },
+    },
     {
         title: "women's Fashion",
         href: "/docs/primitives/progress",
-        },
+    },
     {
         title: "Mens's Fashion",
         href: "/docs/primitives/scroll-area",
-      
+
     },
     {
         title: "Beauty & Health",
         href: "/docs/primitives/tabs",
-      
+
     },
 ]
 
@@ -45,7 +45,7 @@ export function Navbar() {
     return (
 
 
-        <NavigationMenu className=" z-100000! sticky shadow-xs    max-w-none p-4   ">
+        <NavigationMenu className=" z-100! sticky shadow-xs top-0 bg-white   max-w-none p-4   ">
 
             <div className="container  mx-auto flex justify-between items-center sm:w-full md:w-full">
 
@@ -64,14 +64,14 @@ export function Navbar() {
 
                         <NavigationMenuItem>
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link className=" bg-transparent hover:bg-transparent" href="/">Home</Link>
+                                <Link className=" bg-transparent hover:bg-transparent hover:text-[#16a34a]" href="/">Home</Link>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
 
 
                         <NavigationMenuItem>
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link className="bg-transparent hover:bg-transparent" href="/products">Shop</Link>
+                                <Link className="bg-transparent hover:bg-transparent hover:text-[#16a34a]" href="/product">Shop</Link>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
 
@@ -81,14 +81,15 @@ export function Navbar() {
                         <NavigationMenuItem className="  bg-transparent hover:bg-transparent hidden md:flex">
                             <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
                             <NavigationMenuContent>
-                                <ul className=" bg-transparent hover:bg-transparent grid w-100 gap-2 md:w-125 md:grid-cols-2 lg:w-150">
+                                <ul className="     bg-white border border-gray-100 rounded-xl shadow-xl py-2 min-w-[200px]">
                                     {components.map((component) => (
                                         <ListItem
                                             key={component.title}
                                             title={component.title}
                                             href={component.href}
-                                        >
                                            
+                                        >
+
                                         </ListItem>
                                     ))}
                                 </ul>
@@ -97,7 +98,7 @@ export function Navbar() {
 
                         <NavigationMenuItem>
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link className="bg-transparent hover:bg-transparent" href="/brands">Brands</Link>
+                                <Link className="bg-transparent hover:bg-transparent hover:text-[#16a34a]" href="/brands">Brands</Link>
                             </NavigationMenuLink>
 
                         </NavigationMenuItem>
@@ -106,7 +107,7 @@ export function Navbar() {
 
                         <NavigationMenuItem>
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link className="bg-transparent hover:bg-transparent" href="/login">login</Link>
+                                <Link className="bg-transparent hover:bg-transparent hover:text-[#16a34a]" href="/login">login</Link>
                             </NavigationMenuLink>
 
                         </NavigationMenuItem>
@@ -116,7 +117,7 @@ export function Navbar() {
 
                         <NavigationMenuItem>
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link className="bg-transparent hover:bg-transparent" href="/signup">Signup</Link>
+                                <Link className="bg-transparent hover:bg-transparent hover:text-[#16a34a]" href="/signup">Signup</Link>
                             </NavigationMenuLink>
 
                         </NavigationMenuItem>

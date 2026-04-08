@@ -5,6 +5,15 @@ export interface Category {
   image: string;
 }
 
+export interface AllSubCategories{
+   _id:string;
+    name: string;
+  slug: string;
+  category: string;
+  image:string;
+
+
+}
 
 export interface BrandType {
 
