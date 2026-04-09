@@ -1,97 +1,78 @@
+import Categoriesnav from '@/_Components/Categoriesnav';
+import { getAllSubCategories, getCategoryById } from '@/_Services/Api';
+import Link from 'next/link';
+import React from 'react';
+import { FaArrowLeft, FaArrowRight, FaTags } from 'react-icons/fa';
+import { FaFolder } from 'react-icons/fa6';   // Better icon than Fa42Group
 
-import Categoriesnav from '@/_Components/Categoriesnav'
-import { getAllSubCategories, getCategoryById, getSubCategories } from '@/_Services/Api'
-import Link from 'next/link'
-
-import React from 'react'
-import { FaArrowLeft, FaArrowRight, FaFolder, FaTags } from 'react-icons/fa'
-
-interface ParamsDT {
-  _id: string,
-  name: string,
-  slug: string,
-  image: string,
-
+interface PageProps {
+    params: Promise<{ id: string }>;
 }
-export default async function page({ params }: ParamsDT) {
-  console.log({ params })
-  const myParams = await params
-  console.log("myparams ", myParams)
 
-  const caetgoryById = await getCategoryById(myParams.id)
-  console.log("caetgoryById ", caetgoryById)
+export default async function page({ params }: PageProps) {
+    const { id } = await params;
+    console.log("myParams[id]", { id });
 
-  const allSubCategories = await getAllSubCategories()
-  console.log("allSubCategories from", allSubCategories)
+    const allSubcategories = await getAllSubCategories();
+    const CategoryById = await getCategoryById(id);
+    console.log("CategoryById ,", CategoryById);
+    console.log("getAllSubCategories ,", allSubcategories);
 
-  return (
-    <>
+    return (
+        <>
+            <Categoriesnav 
+                field={CategoryById?.name || "category"} 
+                bgLinear="bg-gradient-to-br from-[#16A34A] via-[#22C55E] to-[#4ADE80]"
+                title={CategoryById?.name||"cat name"} 
+                disc="Choose a subcategory to browse products"
+                icon={<FaTags className="text-white text-3xl" />}
+            />
 
-      <Categoriesnav field={caetgoryById?.name} bgLinear={"  bg-gradient-to-br from-[#16A34A] hover: via-[#22C55E] to-[#4ADE80]"}
-        title={caetgoryById?.name} disc={"Choose a subcategory to browse products"} category='categories'
-        icon={<FaTags className='text-white text-3xl' />} />
+            <div className="mx-auto w-10/12 py-10">
 
-      <div className='mx-auto w-10/12'>
+               
+                <Link 
+                    href="/categories" 
+                    className="inline-flex items-center gap-2 text-gray-600 hover:text-[#16A34A] transition-colors mb-8"
+                >
+                    <FaArrowLeft />
+                    <span>Back to Categories</span>
+                </Link>
 
+                <h3 className="text-3xl font-bold text-gray-900 mb-10">
+                    {allSubcategories?.length || 0} Subcategories in {CategoryById?.name}
+                </h3>
 
-        <Link href={"/categories"} className='inline-flex items-center gap-2 text-gray-600 hover:text-[#16A34A] transition-colors mb-6'>
-          <FaArrowLeft />
-          <span> Back to Categories</span>
-        </Link>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    {allSubcategories?.map((item) => (
+                        <Link 
+                            key={item._id} 
+                            href={`/subcategory/${item._id}`}   
+                           
+                        >
+                            <div className="group bg-white rounded-3xl border border-gray-100 p-8 shadow-sm hover:shadow-xl hover:border-green-200 transition-all duration-300 hover:-translate-y-1 flex flex-col items-center text-center">
+                                
+                            
+                                <div className="w-16 h-16 rounded-2xl bg-green-50 flex items-center justify-center mb-6 group-hover:bg-green-100 transition-colors">
+                                    <FaFolder className="text-green-600 text-3xl" />
+                                </div>
 
-
-        <h2 className='text-lg font-bold mb-4 text-gray-900'>40 Subcategories in {caetgoryById?.name}</h2>
-
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 '>
-
-         
-
-          {allSubCategories?.map(  (categry)=> <div key={categry._id} className='group bg-white rounded-2xl border cursor-pointer border-gray-100 p-6 shadow-sm hover:shadow-xl hover:border-primary-200 transition-all duration-300 hover:-translate-y-1'>
-
-       <div className='w-14 h-14 rounded-xl bg-[#DCFCE7] flex items-center justify-center mb-4 group-hover:bg-[#97f7b9] transition-colors'>
-             <span>
-              <FaFolder className='text-[#16a34a]'/>
-            </span>
-       </div>
-
-      <h3 className='font-bold text-gray-900 text-lg group-hover:text-[#16a34a] transition-colors mb-2'>
-{categry.name}
-    <div className='flex items-center gap-2 text-sm text-[#16a34a] opacity-0 group-hover:opacity-100 transition-opacity'>
+                              
+                                <h4 className="font-semibold text-xl text-gray-900">
+                                    {item.name}
+                                </h4>
+<div className="flex items-center justify-center gap-2 text-sm text-[#16A34A] opacity-0 group-hover:opacity-100 transition-all duration-200">
     <span>Browse Products</span>
-    <FaArrowRight/>
+    <FaArrowRight className="text-xs" />
+</div>
+</div>
+                          
+                           
+                        </Link>
+                    ))}
+                </div>
 
-    </div>
-   {/* <h4>Browse Products  <FaArrowRight/> </h4> */}
-      </h3>
-         
-
-          </div>)}
-
-
-
-        </div>
-
-      </div>
-
-
-      {allSubCategories?.map((item) => <div key={item._id}>
-
-
-        {/* <h2>
-       40 Subcategories in {caetgoryById?.name}
-    </h2> */}
-
-        {/* <span src={item.name} className='w-100'/> */}
-        {/* <span>{item.name}</span> */}
-        <img src={item.image} />
-
-
-      </div>)}
-
-
-
-
-
-    </>
-  )
+            </div>
+        </>
+    );
 }

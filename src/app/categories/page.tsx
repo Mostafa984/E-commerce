@@ -1,5 +1,5 @@
 
-import { getCategories } from '@/_Services/Api'
+import { getAllSubCategories, getCategories } from '@/_Services/Api'
 import Link from 'next/link'
 import React from 'react'
 import { IoLayers } from 'react-icons/io5'
@@ -14,6 +14,7 @@ export default async function Page() {
 
     
     const categories = await getCategories()
+   
 
     return (
         <div className="min-h-screen bg-gray-50">

@@ -1,6 +1,6 @@
 import { AllBrands, AllSubCategories, Category, ProductsType } from "@/Types/Product.Types";
 
-export async function getCategories(): Promise<Category[] | undefined> {
+export async function getCategories(): Promise<Category[] | null> {
     try {
 
         const response = await fetch("https://ecommerce.routemisr.com/api/v1/categories", {
@@ -12,6 +12,7 @@ export async function getCategories(): Promise<Category[] | undefined> {
 
     } catch (error) {
         console.log(error)
+        return null
 
 
     }

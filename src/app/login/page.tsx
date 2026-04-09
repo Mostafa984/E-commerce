@@ -1,11 +1,7 @@
 "use client"
-
 import React from 'react'
-
 import { Controller, useForm } from 'react-hook-form'
 import { FaClock, FaFacebook, FaGoogle, FaShieldAlt, FaTruck } from 'react-icons/fa'
-
-
 import { useRouter } from 'next/navigation'
 import logoPic from "../../images/LoginPic.png"
 import { SignInDataType, signInSchema } from './Login.scheme'
@@ -14,15 +10,11 @@ import { Field, FieldError, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 import { toast } from 'sonner'
 import { getLogInAction } from './Login.action'
-import Image from 'next/image'
-import { InfoIcon } from 'lucide-react'
+import {signIn} from "next-auth/react"
 import Link from 'next/link'
 
 
-
-
 export default function SignIn() {
-
 
 
   const router = useRouter()
@@ -45,32 +37,27 @@ export default function SignIn() {
     try {
    const LoggedIn = await getLogInAction(values)
 
-   console.log("the LoggedIn  from login is : ",LoggedIn )
+   console.log("the LoggedIn  from login issss : ",LoggedIn )
 
-  //  console.log("statusText: ",LoggedIn .statusText)
-  
-
-      //TO SWITCH THE PLACE OF IFQ
-
+      signIn("credentials",{
+          redirect:true, callbackUrl:"/" ,...values
+      })
       
-      if (LoggedIn == "OK") {
+//       if (LoggedIn.message == "success") {
 
- toast.success("Logged in succfully", {
-          richColors: true,
-          position: "top-center"
-        })
-        // router.push("/")
+//  toast.success("Logged in succfully", {
+//           richColors: true,
+//           position: "top-center"
+//         })
+//         // router.push("/")
 
-       
-
-
-      }
-      else {
-        toast.error("Incorrect email or password", {
-          richColors: true,
-          position: "top-center"
-        })
-      }
+//       }
+//       else {
+//         toast.error("Incorrect email or password", {
+//           richColors: true,
+//           position: "top-center"
+//         })
+//       }
 
 
 

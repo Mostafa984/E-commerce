@@ -6,7 +6,7 @@ import { Category } from './../Types/Product.Types';
 
 interface Props {
     bgLinear: string,
-    field: string,
+    field: string,//promise
     title: string,
     disc: string,
     icon: React.ReactNode ,  // Better type: accept component or node
@@ -15,7 +15,7 @@ interface Props {
 
 export default async function Categoriesnav({bgLinear, field,title,disc,icon,category }: Props) {
 
-    const categories = await getCategories()
+    
 
     return (
         <>
