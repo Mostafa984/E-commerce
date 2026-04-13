@@ -1,5 +1,5 @@
 "use client"
-import * as React from "react"
+import  React, { useContext } from "react"
 import Link from "next/link"
 import {
     NavigationMenu,
@@ -15,6 +15,8 @@ import logo from "../assets/images/logo.png"
 import { CiHeart } from "react-icons/ci"
 
 import { FaHeadset, FaShoppingCart } from "react-icons/fa"
+import { signOut, useSession } from "next-auth/react"
+import { cartContext } from "@/_Context/CartContextProvider"
 
 const components: { title: string; href: string; }[] = [
     {
@@ -41,7 +43,16 @@ const components: { title: string; href: string; }[] = [
     },
 ]
 
+function handelLogOut() {
+    signOut({ redirect: true, callbackUrl: "/login" })
+}
+
+
 export function Navbar() {
+
+        const {numberOfCartItems} = useContext(cartContext)
+    const session = useSession()
+    console.log("session ", session)
     return (
 
 
@@ -87,7 +98,7 @@ export function Navbar() {
                                             key={component.title}
                                             title={component.title}
                                             href={component.href}
-                                           
+
                                         >
 
                                         </ListItem>
@@ -98,29 +109,86 @@ export function Navbar() {
 
                         <NavigationMenuItem>
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link className="bg-transparent hover:bg-transparent hover:text-[#16a34a]" href="/brands">Brands</Link>
+                                <Link className="bg-transparent hover:bg-transparent hover:text-[#16a34a]" href="/brands">Brands
+                          
+                                   
+                              
+                                </Link>
+
                             </NavigationMenuLink>
 
                         </NavigationMenuItem>
 
 
 
-                        <NavigationMenuItem>
+
+
+
+
+ <NavigationMenuItem>
                             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link className="bg-transparent hover:bg-transparent hover:text-[#16a34a]" href="/login">login</Link>
+                               
                             </NavigationMenuLink>
 
                         </NavigationMenuItem>
 
+                        {
+                            session.data ?
+                                <>
+                                    <NavigationMenuItem>
+                                        <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                                            <button onClick={handelLogOut} className="bg-transparent hover:bg-transparent hover:text-[#16a34a]" >Logout</button>
+                                        </NavigationMenuLink>
+                                    </NavigationMenuItem>
 
 
 
-                        <NavigationMenuItem>
-                            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                <Link className="bg-transparent hover:bg-transparent hover:text-[#16a34a]" href="/signup">Signup</Link>
-                            </NavigationMenuLink>
 
-                        </NavigationMenuItem>
+                                </>
+                                : <>
+
+                                    <NavigationMenuItem>
+                                        <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                                            <Link className="bg-transparent hover:bg-transparent hover:text-[#16a34a]" href="/login">login</Link>
+                                        </NavigationMenuLink>
+
+                                    </NavigationMenuItem>
+
+
+
+
+                                    <NavigationMenuItem>
+                                        <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                                            <Link className="bg-transparent hover:bg-transparent hover:text-[#16a34a]" href="/signup">Signup</Link>
+                                        </NavigationMenuLink>
+
+                                    </NavigationMenuItem>
+
+
+                                </>
+
+                        }
+
+
+                        {session.status === "authenticated" &&
+                            <div>
+                                <NavigationMenuItem>
+                                    <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                                        <p className=" hover:bg-transparent cursor-default text-[#16a34a]" >{session.data.user?.name}</p>
+                              
+                                    </NavigationMenuLink>
+                                </NavigationMenuItem>
+
+
+                                <h1></h1>
+
+                            </div>
+                        }
+
+
+
+
+
 
 
 
@@ -142,7 +210,17 @@ export function Navbar() {
 
                         <div className=" flex items-center justify-center  gap-4">
                             <CiHeart className="w-5 h-5" />
-                            <FaShoppingCart className=" w-5 h-5text-[#6A7282]" />
+                             <span className="text-red-400">
+
+                                          {numberOfCartItems}
+                                    </span> 
+
+                                    <Link href={"/cart"}> 
+                                    
+                                   
+                                 <FaShoppingCart className=" w-5 h-5text-[#6A7282]" />
+                                  </Link>
+                           
                         </div>
 
                     </div>

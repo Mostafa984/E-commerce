@@ -40,24 +40,24 @@ export default function SignIn() {
    console.log("the LoggedIn  from login issss : ",LoggedIn )
 
       signIn("credentials",{
-          redirect:true, callbackUrl:"/" ,...values
+          ...values,redirect:true, callbackUrl:"/" 
       })
       
-//       if (LoggedIn.message == "success") {
+      if (LoggedIn.message == "success") {
 
-//  toast.success("Logged in succfully", {
-//           richColors: true,
-//           position: "top-center"
-//         })
-//         // router.push("/")
+ toast.success("Logged in succfully", {
+          richColors: true,
+          position: "top-center"
+        })
+        // router.push("/")
 
-//       }
-//       else {
-//         toast.error("Incorrect email or password", {
-//           richColors: true,
-//           position: "top-center"
-//         })
-//       }
+      }
+      else {
+        toast.error("Incorrect email or password", {
+          richColors: true,
+          position: "top-center"
+        })
+      }
 
 
 

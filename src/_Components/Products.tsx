@@ -2,14 +2,19 @@ import { getProducts } from '@/_Services/Api'
 import Link from 'next/link'
 import React from 'react'
 import { CiHeart } from 'react-icons/ci'
-import { FaStar } from 'react-icons/fa'
+import {  FaStar } from 'react-icons/fa'
 import { LuEye, LuRefreshCcw } from 'react-icons/lu'
+import AddToCardBtn from './AddToCardBtn'
+
 
 export default async function Products() {
+
     const products = await getProducts()
     
     console.log("products sd",products)
-    
+
+  
+
     return (
         <>
 
@@ -91,9 +96,7 @@ export default async function Products() {
 
                                 </span>
                             </div>
-
-                            <button className='flex items-center justify-center cursor-pointer text-2xl font-semibold bg-[#16A34A] text-white w-10 h-10 rounded-full'>+</button>
-
+            <AddToCardBtn productId={product.id}/>
                         </div>
 
                     </div>

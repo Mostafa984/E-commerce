@@ -8,10 +8,13 @@ import Services from '@/_Components/Services';
 import CouponCards from '@/_Components/CouponCards';
 import Products from '@/_Components/Products';
 import Allcategories from '@/_Components/Allcategories';
+import getMyTokens from '@/utils/getMyToken';
+
 export default async function page() {
  
 
   const image = [pic1.src, pic2.src]
+   getMyTokens()
 
   return (
 
